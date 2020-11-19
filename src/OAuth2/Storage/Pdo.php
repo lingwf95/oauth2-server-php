@@ -96,7 +96,9 @@ class Pdo implements
         $result = $stmt->fetch(\PDO::FETCH_ASSOC);
 
         // make this extensible
-        return $result && $result['client_secret'] == $client_secret;
+        // lingwf
+        // 添加md5验证client_secret
+        return $result && $result['client_secret'] == md5($client_secret);
     }
 
     /**
